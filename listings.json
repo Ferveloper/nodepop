@@ -1,5 +1,4 @@
-{
-    "listings": [{
+[{
             "name": "Bicicleta",
             "forSale": true,
             "price": 230.15,
@@ -14,4 +13,3 @@
             "tags": ["lifestyle", "mobile"]
         }
     ]
-}
