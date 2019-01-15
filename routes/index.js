@@ -31,7 +31,8 @@ mongoose.connect(`mongodb://${server}/${listingsDB}`);
 router.get('/', function (req, res, next) {
   res.locals.title = 'Nodepop';
   Listing.find({}, function (err, listings) {
-    res.locals.db = listings;
+    let limit = 10;
+    res.locals.db = pagination(listings, limit);
     res.render('index');
   })
   // res.locals.db = [
@@ -44,5 +45,17 @@ router.get('/', function (req, res, next) {
   //   }
   // ]
 });
+
+function pagination(arr, limit) {
+var newArr = [];
+var tempArr = [];
+arr.forEach((e,i)=>{
+  if (i % limit === 0 || i === 0) tempArr = []
+  tempArr.push(e)
+  if ((i+1) % limit === 0 || (i+1) === arr.length) newArr.push(tempArr)
+})
+
+console.log(newArr)
+}
 
 module.exports = router;
