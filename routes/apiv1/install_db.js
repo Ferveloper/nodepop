@@ -7,15 +7,6 @@ const Listing = require('./connectMongoose')
 const fs = require('fs');
 const json = JSON.parse(fs.readFileSync('./listings.json', 'utf8'));
 
-//Defining database schema and model
-// const listingSchema = new mongoose.Schema({
-//     name: String,
-//     forSale: Boolean,
-//     price: Number,
-//     photo: String,
-//     tags: [String]
-// });
-
 //Connecting to database
 mongoose.connect(`mongodb://${server}/${listingsDB}`);
 
@@ -33,8 +24,10 @@ db.once('open', function () {
             console.log('Insertados todos los registros iniciales en la base de datos...')
             Listing.find(function (err, listings) {
                 if (err) return console.error(err);
-                console.log('Mostrando registros insertados:')
+                console.log('Mostrando registros insertados:');
                 console.log(listings);
+                console.log('Cerrando base de datos...');
+                db.close();
             })
         })
     });

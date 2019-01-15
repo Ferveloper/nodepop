@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,27 @@
     <link rel="stylesheet" href="./stylesheets/style.css">
     <title>Nodepop</title>
 </head>
+
 <body>
     <header>
-    <h1><%= title %></h1>
+        <h1>
+            <%= title %>
+        </h1>
     </header>
     <main>
         <h1>Listado de artículos</h1>
-            <div class="page">
-                    <% db.forEach(db => { %>
-                    <h2><%= db.name %></h2>
-                    <p><%= db.forSale %></p>
-                    <p><%= db.price %></p>
-                    <p><%= db.photo %></p>
-                    <p><%= db.tags %></p>
-                    <% }) %>
-            </div>
+        <div class="page">
+            <% db.forEach(db => { %>
+            <h2><%= db.name %></h2>
+            <p><%= db.forSale %></p>
+            <p><%= db.price %></p>
+            <p><%= db.photo %></p>
+            <p>
+                <%= db.tags %>
+            </p>
+            <% }) %>
+        </div>
     </main>
 </body>
+
 </html>

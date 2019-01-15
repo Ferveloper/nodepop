@@ -5,7 +5,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const server = 'localhost';
 const listingsDB = 'listings_db';
-const Listing = require('../connectMongoose')
+const Listing = require('./apiv1/connectMongoose')
 
 //Error or success console notifications
 const db = mongoose.connection;
@@ -17,22 +17,14 @@ db.once('open', function () {
 //Connecting to database
 mongoose.connect(`mongodb://${server}/${listingsDB}`);
 
-// const listingSchema = new mongoose.Schema({
-//   name: String,
-//   forSale: Boolean,
-//   price: Number,
-//   photo: String,
-//   tags: [String]
-// });
-
-// const Listing = mongoose.model('Listing', listingSchema)
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.locals.title = 'Nodepop';
   Listing.find({}, function (err, listings) {
-    let limit = 10;
-    res.locals.db = pagination(listings, limit);
+    // let limit = 10;
+    // res.locals.db = pagination(listings, limit);
+    if (err) console.error(err);
+    res.locals.db =listings;
     res.render('index');
   })
   // res.locals.db = [
@@ -46,16 +38,16 @@ router.get('/', function (req, res, next) {
   // ]
 });
 
-function pagination(arr, limit) {
-var newArr = [];
-var tempArr = [];
-arr.forEach((e,i)=>{
-  if (i % limit === 0 || i === 0) tempArr = []
-  tempArr.push(e)
-  if ((i+1) % limit === 0 || (i+1) === arr.length) newArr.push(tempArr)
-})
+// function pagination(arr, limit) {
+// var newArr = [];
+// var tempArr = [];
+// arr.forEach((e,i)=>{
+//   if (i % limit === 0 || i === 0) tempArr = []
+//   tempArr.push(e)
+//   if ((i+1) % limit === 0 || (i+1) === arr.length) newArr.push(tempArr)
+// })
 
-console.log(newArr)
-}
+// console.log(newArr)
+// }
 
 module.exports = router;
