@@ -13,6 +13,13 @@
     </header>
     <main>
         <h1>Listado de artículos</h1>
+        <% db.forEach(db => { %>
+        <h2><%= db.name %></h2>
+        <p><%= db.forSale %></p>
+        <p><%= db.price %></p>
+        <p><%= db.photo %></p>
+        <p><%= db.tags %></p>
+        <% }) %>
     </main>
 </body>
 </html>
