@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const server = 'localhost';
 const listingsDB = 'listings_db';
-const Listing = require('../../models/Listing')
+const Listing = require('./models/Listing')
 const fs = require('fs');
 const json = JSON.parse(fs.readFileSync('./listings.json', 'utf8'));
 
