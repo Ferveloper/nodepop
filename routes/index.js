@@ -20,7 +20,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  const Listing = require('./apiv1/listings')
+  const Listing = require('../models/Listing')
   res.locals.title = 'Nodepop';
   Listing.find({}, function (err, listings) {
     // let limit = 10;

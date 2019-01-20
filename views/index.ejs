@@ -11,21 +11,23 @@
 
 <body>
     <header>
-        <h1>
+        <h1 class="header">
             <%= title %>
         </h1>
     </header>
     <main>
-        <h1>Listado de artículos</h1>
-        <div class="page">
+        <h1 class="title">Listado de artículos</h1>
+        <div class="container">
             <% db.forEach(db => { %>
-            <h2><%= db.name %></h2>
-            <p><%= db.forSale %></p>
-            <p><%= db.price %></p>
-            <p><%= db.photo %></p>
-            <p>
-                <%= db.tags %>
-            </p>
+            <div class="listing">
+                <h2><%= db.name %></h2>
+                <p><%= db.forSale? "Se vende" : "Se busca" %></p>
+                <p><%= db.price %> €</p>
+                <div class="img-container"><img src="./images/<%= db.photo %>" alt="<%= db.photo %>"></div>
+                <p><% db.tags.forEach(tag => { %>
+                    <span class="tag"><%=tag %></span>
+                    <% }) %></p>
+            </div>
             <% }) %>
         </div>
     </main>

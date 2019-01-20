@@ -18,10 +18,11 @@ app.set('view engine', 'ejs');
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use('/css', express.static(path.join(__dirname, 'public/css')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-require('./lib/connectMongoose');
-require('./models/Listing');
+const db = require('./lib/connectMongoose');
+const Listing = require('./models/Listing');
 
 app.use('/', indexRouter);
 app.use('/apiv1', apiRouter);
