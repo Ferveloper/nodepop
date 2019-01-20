@@ -20,7 +20,7 @@
         <div class="container">
             <% db.forEach(db => { %>
             <div class="listing">
-                <h2><%= db.name %></h2>
+                <h2 class="name"><%= db.name %></h2>
                 <p><%= db.forSale? "Se vende" : "Se busca" %></p>
                 <p><%= db.price %> €</p>
                 <div class="img-container"><img src="./images/<%= db.photo %>" alt="<%= db.photo %>"></div>

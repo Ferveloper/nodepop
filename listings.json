@@ -74,5 +74,278 @@
         "price": 15,
         "photo": "auriculares-apple.jpg",
         "tags": ["mobile", "lifestyle"]
+    },
+    {
+        "name": "iPhone 7",
+        "forSale": true,
+        "price": 270,
+        "photo": "iphone-7.jpg",
+        "tags": ["mobile", "lifestyle"]
+    },
+    {
+        "name": "Samsung Galaxy S8",
+        "forSale": true,
+        "price": 400,
+        "photo": "samsung-galaxy-s8.jpg",
+        "tags": ["mobile"]
+    },
+    {
+        "name": "iPhone 8 64GB",
+        "forSale": false,
+        "price": 570,
+        "photo": "iphone-8-64gb.jpg",
+        "tags": ["mobile", "lifestyle"]
+    },
+    {
+        "name": "Camiseta Real Madrid",
+        "forSale": true,
+        "price": 70,
+        "photo": "camiseta-real-madrid.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "name": "Camiseta FC Barcelona",
+        "forSale": true,
+        "price": 19.95,
+        "photo": "camiseta-fc-barcelona.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "name": "Camiseta Totti AS Roma",
+        "forSale": false,
+        "price": 40,
+        "photo": "camiseta-totti.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "name": "Camiseta España",
+        "forSale": true,
+        "price": 15,
+        "photo": "camiseta-españa.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "name": "Camiseta Liverpool FC",
+        "forSale": true,
+        "price": 25,
+        "photo": "camiseta-liverpool.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "name": "Peugeot 406",
+        "forSale": true,
+        "price": 5000,
+        "photo": "peugeot-406.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Audi A3",
+        "forSale": true,
+        "price": 7500,
+        "photo": "audi-a3.jpg",
+        "tags": ["motor", "lifestyle"]
+    },
+    {
+        "name": "Opel Astra",
+        "forSale": true,
+        "price": 2800,
+        "photo": "opel-astra.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Mercedes Benz",
+        "forSale": true,
+        "price": 18000,
+        "photo": "mercedes-benz.jpg",
+        "tags": ["motor", "lifestyle"]
+    },
+    {
+        "name": "Honda Civic",
+        "forSale": false,
+        "price": 10000,
+        "photo": "honda-civic.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "BMW Serie 3",
+        "forSale": false,
+        "price": 12000,
+        "photo": "bmw-serie-3.jpg",
+        "tags": ["motor", "lifestyle"]
+    },
+    {
+        "name": "Vespa",
+        "forSale": true,
+        "price": 1500,
+        "photo": "vespa.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Kawasaki Ninja",
+        "forSale": true,
+        "price": 1500,
+        "photo": "kawasaki-ninja.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Yamaha YZ",
+        "forSale": false,
+        "price": 3900,
+        "photo": "yamaha-yz.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Aprilia Arrecife",
+        "forSale": true,
+        "price": 600,
+        "photo": "aprilia-arrecife.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Chaqueta Garibaldi",
+        "forSale": true,
+        "price": 45,
+        "photo": "chaqueta-garibaldi.jpg",
+        "tags": ["motor", "lifestyle"]
+    },
+    {
+        "name": "Minimoto de competición",
+        "forSale": false,
+        "price": 200,
+        "photo": "minimoto-competicion.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Guantes de moto",
+        "forSale": true,
+        "price": 100,
+        "photo": "guantes-moto.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Tubos de escape",
+        "forSale": false,
+        "price": 115,
+        "photo": "tubos-escape.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Bicicleta BMC",
+        "forSale": true,
+        "price": 2000,
+        "photo": "bicicleta-bmc.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Bicicleta Peugeot vintage",
+        "forSale": true,
+        "price": 60,
+        "photo": "bicicleta-peugeot.jpg",
+        "tags": ["motor", "lifestyle"]
+    },
+    {
+        "name": "Bicicleta Giant TCR",
+        "forSale": true,
+        "price": 600,
+        "photo": "bicicleta-giant.jpg",
+        "tags": ["motor"]
+    },
+    {
+        "name": "Teléfono de oficina",
+        "forSale": true,
+        "price": 80,
+        "photo": "telefono-oficina.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Blackberry Curve",
+        "forSale": true,
+        "price": 50,
+        "photo": "blackberry-curve.jpg",
+        "tags": ["work", "mobile"]
+    },
+    {
+        "name": "Blackberry Q-10",
+        "forSale": false,
+        "price": 190,
+        "photo": "blackberry-q10.jpg",
+        "tags": ["work", "mobile"]
+    },
+    {
+        "name": "Cajonera de oficina",
+        "forSale": true,
+        "price": 15,
+        "photo": "cajonera.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Silla de oficina blanca",
+        "forSale": true,
+        "price": 99,
+        "photo": "silla-oficina-blanca.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Maletín de oficina",
+        "forSale": true,
+        "price": 50,
+        "photo": "maletin-oficina.jpg",
+        "tags": ["work", "lifestyle"]
+    },
+    {
+        "name": "Apple Mac Book Pro",
+        "forSale": true,
+        "price": 50,
+        "photo": "maletin-oficina.jpg",
+        "tags": ["work", "lifestyle"]
+    },
+    {
+        "name": "Pantalla de ordenador Dell",
+        "forSale": true,
+        "price": 15,
+        "photo": "pantalla-dell.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Portátil HP",
+        "forSale": true,
+        "price": 300,
+        "photo": "portatil-hp.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Portátil Compaq",
+        "forSale": true,
+        "price": 85,
+        "photo": "portatil-compaq.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Ordenador portátil",
+        "forSale": false,
+        "price": 150,
+        "photo": "portatil.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Escritorio Ikea",
+        "forSale": true,
+        "price": 150,
+        "photo": "escritorio-ikea.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Mesa de escritorio",
+        "forSale": false,
+        "price": 100,
+        "photo": "mesa-escritorio.jpg",
+        "tags": ["work"]
+    },
+    {
+        "name": "Corbatas vintage",
+        "forSale": true,
+        "price": 10,
+        "photo": "corbatas-vintage.jpg",
+        "tags": ["work", "lifestyle"]
     }
 ]

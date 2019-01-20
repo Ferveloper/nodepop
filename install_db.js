@@ -8,7 +8,9 @@ const fs = require('fs');
 const json = JSON.parse(fs.readFileSync('./listings.json', 'utf8'));
 
 //Connecting to database
-mongoose.connect(`mongodb://${server}/${listingsDB}`);
+mongoose.connect(`mongodb://${server}/${listingsDB}`, {
+    useNewUrlParser: true
+});
 
 //Error and success handlers
 const db = mongoose.connection;
@@ -26,8 +28,11 @@ db.once('open', function () {
                 if (err) return console.error(err);
                 console.log('Mostrando registros insertados:');
                 console.log(listings);
-                console.log('Cerrando base de datos...');
-                db.close();
+                Listing.countDocuments({}, function (err, count) {
+                    console.log(`${count} registros insertados`);
+                    console.log('Cerrando base de datos...');
+                    db.close();
+                });
             })
         })
     });
