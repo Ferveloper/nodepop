@@ -39,10 +39,8 @@ router.get('/listings', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const data = req.body;
-
-        const agente = new Listing(data);
-
-        const savedListing = await agente.save();
+        const listing = new Listing(data);
+        const savedListing = await listing.save();
 
         res.json({
             success: true,
