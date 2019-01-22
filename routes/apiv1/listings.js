@@ -2,31 +2,33 @@
 
 const express = require('express');
 const router = express.Router();
-const Listing = require('../../models/Listing')
+const Listing = require('../../models/Listing');
+const applyFilters = require('../../lib/applyFilters');
 
 /* GET home page. */
 router.get('/listings', async (req, res, next) => {
     try {
         // Input values
-        const tag = req.query.tag;
         const name = req.query.name;
         const forSale = req.query.sale;
         const price = req.query.price;
-        const photo = req.query.photo;
+        const tag = req.query.tag;
+
         const skip = parseInt(req.query.skip);
         const limit = parseInt(req.query.limit);
         const fields = req.query.fields;
         const sort = req.query.sort;
 
-        const filter = {};
+        const filter = applyFilters(name, forSale, price, tag);
 
-        if (tag) filter.tag = tag;
-        if (name) filter.name = name;
-        if (forSale) filter.forSale = sale;
-        if (price) filter.price = price;
-        if (photo) filter.photo = photo;
+        // if (name) filter.name = new RegExp(`^${name}`, 'i');
+        // if (forSale) filter.forSale = forSale;
+        // if (price) filter.price = parsePrice(price);
+        // if (tag) filter.tags = {
+        //     $in: (typeof tag === 'string') ? [tag] : tag
+        // };
 
-        // buscamos agentes en la base de datos
+        // Query results as per filters
         const listings = await Listing.list(filter, skip, limit, fields, sort);
 
         res.json({
