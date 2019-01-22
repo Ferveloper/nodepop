@@ -21,13 +21,6 @@ router.get('/listings', async (req, res, next) => {
 
         const filter = applyFilters(name, forSale, price, tag);
 
-        // if (name) filter.name = new RegExp(`^${name}`, 'i');
-        // if (forSale) filter.forSale = forSale;
-        // if (price) filter.price = parsePrice(price);
-        // if (tag) filter.tags = {
-        //     $in: (typeof tag === 'string') ? [tag] : tag
-        // };
-
         // Query results as per filters
         const listings = await Listing.list(filter, skip, limit, fields, sort);
 
@@ -76,6 +69,16 @@ router.get('/tags', async (req, res, next) => {
         next(err);
         return;
     }
+});
+
+router.use(function (err, req, res, next) {
+    // Send the error JSON
+    res.status(err.status || 500);
+    res.json({
+        success: false,
+        status: err.status || 500,
+        result: err.message
+    });
 });
 
 module.exports = router;

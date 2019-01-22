@@ -21,13 +21,6 @@ router.get('/', async (req, res, next) => {
 
     const filter = applyFilters(name, forSale, price, tag);
 
-    // if (name) filter.name = new RegExp(`^${name}`, 'i');
-    // if (forSale) filter.forSale = forSale;
-    // if (price) filter.price = parsePrice(price);
-    // if (tag) filter.tags = {
-    //   $in: (typeof tag === 'string') ? [tag] : tag
-    // };
-
     // Query results as per filters
     const listings = await Listing.list(filter, skip, limit, fields, sort);
 
