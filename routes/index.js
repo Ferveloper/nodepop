@@ -12,14 +12,14 @@ router.get('/', async (req, res, next) => {
     const name = req.query.name;
     const forSale = req.query.sale;
     const price = req.query.price;
-    const tag = req.query.tag;
+    const tags = req.query.tag;
     
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
     const fields = req.query.fields;
     const sort = req.query.sort;
 
-    const filter = applyFilters(name, forSale, price, tag);
+    const filter = applyFilters(name, forSale, price, tags);
 
     // Query results as per filters
     const listings = await Listing.list(filter, skip, limit, fields, sort);
