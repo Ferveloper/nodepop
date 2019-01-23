@@ -52,9 +52,32 @@ img {
   margin: 5px
 }
 
+.sale {
+  color: white;
+  background-color: green;
+  padding: 3px 5px;
+  margin: 3px;
+  border-radius: 5px
+}
+
+.demand {
+  color: white;
+  background-color: red;
+  padding: 3px 5px;
+  margin: 3px;
+  border-radius: 5px
+}
+
+.price {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding-left: 5px
+}
+
 .tag {
   color: white;
-  background-color:red;
+  background-color:blue;
   padding: 3px 5px;
   margin: 3px;
   border-radius: 5px

@@ -21,8 +21,12 @@
             <% db.forEach(db => { %>
             <div class="listing">
                 <h2 class="name"><%= db.name %></h2>
-                <p><%= db.forSale? "Se vende" : "Se busca" %></p>
-                <p><%= db.price %> €</p>
+                <p><% if (db.forSale) { %>
+                    <span class="sale">Se vende</span>
+                <% } else { %>
+                    <span class="demand">Se busca</span></p>
+                <% } %>
+                <p class="price"><%= db.price %> €</p>
                 <div class="img-container"><img src="./images/<%= db.photo %>" alt="<%= db.photo %>"></div>
                 <p><% db.tags.forEach(tag => { %>
                     <span class="tag"><%=tag %></span>
