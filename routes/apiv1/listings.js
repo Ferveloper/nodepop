@@ -56,10 +56,11 @@ router.post('/', async (req, res, next) => {
 // Get tags
 router.get('/tags', async (req, res, next) => {
     try {
+        const tags = await Listing.distinct('tags');
         res.json({
             success: true,
             results: {
-                tags: ["work", "lifestyle", "motor", "mobile"]
+                tags: tags
             }
         });
 
