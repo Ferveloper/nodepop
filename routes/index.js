@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
     const forSale = req.query.sale;
     const price = req.query.price;
     const tags = req.query.tag;
-    
+
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
     const fields = req.query.fields;
