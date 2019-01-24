@@ -1,10 +1,11 @@
 {
   "name": "nodepop",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "cross-env DEBUG=nodeapi:* nodemon"
+    "dev": "cross-env DEBUG=nodeapi:* nodemon",
+    "initdb": "node install_db.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
