@@ -16,7 +16,6 @@ router.get('/', async (req, res, next) => {
 
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
-    const fields = req.query.fields;
     const sort = req.query.sort;
 
     const filter = applyFilters(name, forSale, price, tags);
