@@ -72,36 +72,105 @@ Para el arranque en modo producción:
 
 ## Instrucciones de uso
 
+_**NOTA:** Los ejemplos mostrados a continuación hacen llamadas a la API desde el sistema local en que que se instaló el proyecto. Para su uso por aplicaciones externas al sistema, deberá sustituirse `http://localhost:3000` por el nombre de dominio que se le haya asignado a la máquina para ser accesible a través de Internet._
+
 ### Listado de artículos en HTML
 
-Para visualizar la página HTML que muestra el listado completo de artículos basta acceder con el navegador a la URL `http://localhost:3000`.  
+Para visualizar la página HTML que muestra el listado completo de artículos basta acceder con el navegador del sistema a la URL `http://localhost:3000`.  
 Si se desea filtrar los artículos, esto se hará mediante petición GET en la query string, siguiendo el siguiente formato:
 
 `http://localhost:3000/?key1=value1&key2=value2&key3=value3...`
 
-Las variables y valores aceptados son los siguientes:
+Los parámetros aceptados son `name`, `sale`, `price`, `tag`, `skip`, `limit` y `sort`, cuyo uso se describe a continuación:
 
-- `name` es una `string` que indica el nombre del artículo o el comienzo de la palabra del anuncio. No es sensible a mayúsculas. **Ejemplo:** `name=b` devolverá nombres como `bicicleta` o `butaca`.
+- `name` indica el nombre del artículo o el comienzo de la palabra del anuncio. No es sensible a mayúsculas.  
+**Ejemplo:** `http://localhost:3000/?name=b` devolverá anuncios de `bicicleta` y también de `blackberry`.
 - `sale` es un valor `boolean` que indica si el artículo se vende (`true`) o se busca (`false`).
-- `price` es una `string` que indica el precio o rango de precio del artículo. Para indicar un precio exacto, basta indicarlo directamente (**Ejemplo:** `price=50`). Para buscar por rangos de precio, se utiliza el formato `"min-max"`, donde:
-  - `"min-max"` mostrará los artículos cuyo precio se encuentre entre `min` y `max` (ambos inclusive).
-  - `"min-"` mostrará los artículos cuyo precio sea igual o mayor que `min`.
-  - `"-max"` mostrará los artículos cuyo precio sea igual o menor que `max`.
-- `tag` es es una `string` que indica la categoría del artículo. Para buscar por varias categorías, se incluirán varios tags consecutivos. **Ejemplo:** `tag=mobile&tag=lifestyle&tag=work`.  
-**NOTA:** Cuando se filtra por varios tags, se mostrarán los artículos que tengan al menos uno de los tags indicados en el filtro.
-- `skip` indica el número de anuncios iniciales a ignorar a la hora de devolver resultados. Este valor resulta útil si se desea mostrar resultados paginados. 
-- `limit` indica el número límite de anuncios a mostrar. Este valor resulta útil si se desea mostrar resultados paginados.
-- `sort` indica el campo por el que se desea ordenar de los resultados. **Ejemplo:** `sort=name` ordena los resultados alfabéticamente por el nombre, `sort=price` ordena los resultados por precio de menor a mayor.
+- `price` indica el precio o rango de precio del artículo. Para indicar un precio exacto, basta indicarlo directamente (**Ejemplo:** `http://localhost:3000/?price=50`). Para buscar por rangos de precio, se utiliza el formato `"price=min-max"`, que acepta tres variantes:
+  - `"min-max"` mostrará los artículos cuyo precio se encuentre entre `min` y `max` (ambos inclusive).  
+  **Ejemplo:** `http://localhost:3000/?price=50-200`
+  - `"min-"` mostrará los artículos cuyo precio sea igual o mayor que `min`.  
+  **Ejemplo:** `http://localhost:3000/?price=50-`
+  - `"-max"` mostrará los artículos cuyo precio sea igual o menor que `max`.  
+  **Ejemplo:** `http://localhost:3000/?price=-200`
+- `tag` indica la categoría en que se clasifica el artículo. Para buscar por varias categorías, se incluirán varios tags consecutivos.  
+**Ejemplo:** `http://localhost:3000/?tag=mobile&tag=lifestyle&tag=work`.  
+**NOTA:** Cuando se filtra por varios tags, se mostrarán los artículos que tengan **al menos uno** de los tags indicados en el filtro.
+- `skip` indica el número de anuncios iniciales a ignorar a la hora de devolver los resultados filtrados. Este valor resulta útil si se desea mostrar resultados paginados. 
+- `limit` indica el número límite de anuncios a devolver. Este valor resulta útil si se desea mostrar resultados paginados.
+- `sort` indica el campo por el que se desea ordenar de los resultados recibidos.  
+**Ejemplo:** `http://localhost:3000/?sort=name` ordena los resultados alfabéticamente por nombre, mientras que `http://localhost:3000/?sort=price` ordena los resultados por precio de menor a mayor.
 
 ### Listado de artículos en formato JSON
 
-Para realizar peticiones a la API
+Para conectarse directamente a la API y recibir el listado completo de anuncios en formato JSON ha de realizarse una petición GET a la URL `http://localhost:3000/apiv1/listings`.  
+
+Si se desea filtrar los artículos, esto se hará mediante petición GET en la query string, siguiendo el siguiente formato:
+
 `http://localhost:3000/apiv1/listings?key1=value1&key2=value2&key3=value3...`
+
+Los parámetros aceptados son `name`, `sale`, `price`, `tag`, `skip`, `limit`, `sort` y `fields`, cuyo uso se describe a continuación:
+
+- `name` indica el nombre del artículo o el comienzo de la palabra del anuncio. No es sensible a mayúsculas.  
+**Ejemplo:** `http://localhost:3000/apiv1/listings?name=b` devolverá anuncios de `bicicleta` y también de `blackberry`.
+- `sale` es un valor `boolean` que indica si el artículo se vende (`true`) o se busca (`false`).
+- `price` indica el precio o rango de precio del artículo. Para indicar un precio exacto, basta indicarlo directamente (**Ejemplo:** `http://localhost:3000/apiv1/listings?price=50`). Para buscar por rangos de precio, se utiliza el formato `"price=min-max"`, que acepta tres variantes:
+  - `"min-max"` devolverá los artículos cuyo precio se encuentre entre `min` y `max` (ambos inclusive).  
+  **Ejemplo:** `http://localhost:3000/apiv1/listings?price=50-200`
+  - `"min-"` devolverá los artículos cuyo precio sea igual o mayor que `min`.  
+  **Ejemplo:** `http://localhost:3000/apiv1/listings?price=50-`
+  - `"-max"` devolverá los artículos cuyo precio sea igual o menor que `max`.  
+  **Ejemplo:** `http://localhost:3000/apiv1/listings?price=-200`
+- `tag` indica la categoría en que se clasifica el artículo. Para buscar por varias categorías, se incluirán varios tags consecutivos.  
+**Ejemplo:** `http://localhost:3000/apiv1/listings?tag=mobile&tag=lifestyle&tag=work`.  
+**NOTA:** Cuando se filtra por varios tags, se devolverán los artículos que tengan **al menos uno** de los tags indicados en el filtro.
+- `skip` indica el número de anuncios iniciales a ignorar a la hora de devolver los resultados filtrados. Este valor resulta útil si se desea recibir resultados paginados. 
+- `limit` indica el número límite de anuncios a devolver. Este valor resulta útil si se desea recibir resultados paginados.
+- `sort` indica el campo por el que se desea ordenar de los resultados recibidos.  
+**Ejemplo:** `http://localhost:3000/apiv1/listings?sort=name` ordena los resultados alfabéticamente por nombre, mientras que `http://localhost:3000/apiv1/listings?sort=price` ordena los resultados por precio de menor a mayor.
+- `fields` indica los campos de los anuncios que se desean recibir en los resultados. Para recibir varios campos, se incluirán varios valores `fields` consecutivos.  
+**Ejemplo:** `http://localhost:3000/apiv1/listings?fields=name&fields=price` devolverá todos los anuncios, pero sólo con los campos de nombre y precio.
 
 ### Listado de tags en formato JSON
 
+Para recibir el listado completo de tags en formato JSON ha de realizarse una petición GET a la URL `http://localhost:3000/apiv1/tags`.
+
 `http://localhost:3000/apiv1/tags`
 
-### Creación de anuncio
+Esta ruta no admite claves y valores en la query string. Si se envian, son ignoradas y se procesa la petición de tags de forma normal, sin devolver ningún error.
+
+### Creación de anuncios
+
+Para crear un anuncio e insertarlo en la base de datos ha de realizarse una petición POST a la URL `http://localhost:3000/apiv1/listings`.
+
+Los parámetros aceptados en el body de la petición son `name`, `sale`, `price`, `tag`, `skip`, `limit` y `sort`, cuyo uso se describe a continuación:
 
 `http://localhost:3000/apiv1`
+
+### Formato de respuestas JSON
+
+El formato de los resultados es el siguiente:
+
+```javascript
+{
+    "success": true,
+    "results": {
+        // JSON results
+        }
+}
+```
+
+Si la petición tiene éxito, `success` será igual a `true` y `results` contendrá los resultados en formato JSON. Si, siendo `success` igual a `true`, `results` contuviera un objeto vació, significa que el filtrado de resultados no ha devuelto ningúna documento válido o que se han enviado filtros errónes que han impedido igualmente devolver ningún documento válido.
+
+En caso de error, el formato enviado es el siguiente:
+
+```javascript
+{
+    "success": false,
+    "status": /*Status code*/,
+    "message": // Error message        }
+}
+```
+
+Si se produce un error en la petición, `success` será igual a `false` y se enviará el código HTTP de status, así como el mensaje de error correspondiente.
+

@@ -82,7 +82,7 @@ router.use(function (err, req, res, next) {
   res.json({
     success: false,
     status: err.status || 500,
-    result: err.message
+    message: err.message
   });
 });
 
