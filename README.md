@@ -157,13 +157,13 @@ El formato de resultados para una petición aceptada es el siguiente:
 ```javascript
 {
     "success": true,
-    "results": {
+    "results": [
         // JSON results
-        }
+    ]
 }
 ```
 
-Si la petición tiene éxito, `success` será igual a `true` y `results` contendrá los resultados en formato JSON, de acuerdo al schema descrito anteriormente. Si, siendo `success` igual a `true`, `results` contuviera un objeto vació, significa que el filtrado de resultados no ha devuelto ningúna documento válido o que se han enviado filtros erróneos que han impedido igualmente devolver algún documento válido.
+Si la petición tiene éxito, `success` será igual a `true` y `results` contendrá un array de resultados en formato JSON, de acuerdo al schema descrito anteriormente. Si, siendo `success` igual a `true`, `results` contuviera un objeto vació, significa que el filtrado de resultados no ha devuelto ningúna documento válido o que se han enviado filtros erróneos que han impedido igualmente devolver algún documento válido.
 
 En caso de error, el formato enviado es el siguiente:
 
