@@ -170,10 +170,9 @@ En caso de error, el formato enviado es el siguiente:
 ```javascript
 {
     "success": false,
-    "status": /*Status code*/,
     "message": // Error message
 }
 ```
 
-Si se produce un error en la petición, `success` será igual a `false` y se enviará el código HTTP de status, así como el mensaje de error correspondiente.
+Si se produce un error en la petición, `success` será igual a `false` y se enviará el mensaje de error correspondiente.
 
