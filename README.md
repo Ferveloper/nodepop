@@ -21,10 +21,11 @@ Se requiere que el sistema donde se vaya a ejecutar esta API tenga instalado el 
 
 ## Descarga e instalación del proyecto
 
-Para clonar el proyecto e instalar sus dependencias en el sistema, ha de ejecutarse en la consola, dentro del directorio creado para el proyecto, los siguientes comandos:
+Para clonar el proyecto e instalar sus dependencias en el sistema, han de ejecutarse en consola los siguientes comandos:
 
 ```bash
 git clone https://github.com/Ferveloper/nodepop.git
+cd nodepop
 npm i
 ```
 
