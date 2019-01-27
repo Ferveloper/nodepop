@@ -170,7 +170,7 @@ En caso de error, el formato enviado es el siguiente:
 ```javascript
 {
     "success": false,
-    "message": // Error message
+    "error": // Error message
 }
 ```
 
