@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
     const filter = applyFilters(name, forSale, price, tags);
 
     // Query results as per filters
-    const listings = await Listing.list(filter, skip, limit, sort);
+    const listings = await Listing.list(filter, skip, limit, null, sort);
 
     res.locals.title = 'Nodepop';
     res.locals.db = listings;

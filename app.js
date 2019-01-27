@@ -18,7 +18,9 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -33,13 +35,25 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  // render the error JSON
+  if (isAPIRequest(req)) {
+    res.json({
+      success: false,
+      error: err.message
+    });
+    return;
+  }
+
+  // render the error page
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
   res.render('error');
 });
+
+function isAPIRequest(req) {
+  return req.originalUrl.indexOf('/apiv1') === 0;
+};
 
 module.exports = app;

@@ -45,7 +45,7 @@ Puede configurarse la lista inicial de anuncios en el fichero `listings.json` ub
 ```javascript
 Schema({
 name: String,
-sale: Boolean,
+forSale: Boolean,
 price: Number,
 photo: String,
 tags: [String]
@@ -55,7 +55,7 @@ tags: [String]
 Donde:
 
 - `name` es el título del anuncio.
-- `sale` es un valor booleano que indica si el artículo se vende (`true`) o se busca (`false`).
+- `forSale` es un valor booleano que indica si el artículo se vende (`true`) o se busca (`false`).
 - `price` es el precio del artículo.
 - `photo` es el nombre del archivo que muestra la foto del artículo.
 - `tags` es el listado de categorías del artículo. Inicialmente se han definido las categorías `mobile`, `motor`, `lifestyle` y `work`, pero pueden crearse nuevas sin provocar errores de código.
@@ -98,7 +98,7 @@ Los parámetros aceptados son `name`, `sale`, `price`, `tag`, `skip`, `limit` y 
 **NOTA:** Cuando se filtra por varios tags, se mostrarán los artículos que tengan **al menos uno** de los tags indicados en el filtro.
 - `skip` indica el número de anuncios iniciales a ignorar a la hora de devolver los resultados filtrados. Este valor resulta útil si se desea mostrar resultados paginados. 
 - `limit` indica el número límite de anuncios a devolver. Este valor resulta útil si se desea mostrar resultados paginados.
-- `sort` indica el campo por el que se desea ordenar de los resultados recibidos.  
+- `sort` indica el campo del schema por el que se desea ordenar de los resultados recibidos.  
 **Ejemplo:** `http://localhost:3000/?sort=name` ordena los resultados alfabéticamente por nombre, mientras que `http://localhost:3000/?sort=price` ordena los resultados por precio de menor a mayor.
 
 ### Listado de artículos en formato JSON
@@ -135,7 +135,7 @@ Los parámetros aceptados son `name`, `sale`, `price`, `tag`, `skip`, `limit`, `
 
 Para recibir el listado completo de tags en formato JSON ha de realizarse una petición GET a la URL `http://localhost:3000/apiv1/tags`.
 
-Esta ruta no admite claves y valores en la query string. Si se envian, son ignoradas y se procesa la petición de tags de forma normal, sin devolver ningún error.
+Esta ruta no admite parámetros en la query string. Si se envian, son ignoradas y se procesa la petición de tags de forma normal, sin devolver ningún error.
 
 ### Creación de anuncios
 
@@ -152,7 +152,7 @@ Los parámetros aceptados en el body de la petición POST son `name`, `sale`, `p
 
 ### Formato de respuestas JSON
 
-El formato de los resultados es el siguiente:
+El formato de resultados para una petición aceptada es el siguiente:
 
 ```javascript
 {
@@ -163,7 +163,7 @@ El formato de los resultados es el siguiente:
 }
 ```
 
-Si la petición tiene éxito, `success` será igual a `true` y `results` contendrá los resultados en formato JSON. Si, siendo `success` igual a `true`, `results` contuviera un objeto vació, significa que el filtrado de resultados no ha devuelto ningúna documento válido o que se han enviado filtros errónes que han impedido igualmente devolver ningún documento válido.
+Si la petición tiene éxito, `success` será igual a `true` y `results` contendrá los resultados en formato JSON, de acuerdo al schema descrito anteriormente. Si, siendo `success` igual a `true`, `results` contuviera un objeto vació, significa que el filtrado de resultados no ha devuelto ningúna documento válido o que se han enviado filtros erróneos que han impedido igualmente devolver algún documento válido.
 
 En caso de error, el formato enviado es el siguiente:
 
@@ -175,4 +175,3 @@ En caso de error, el formato enviado es el siguiente:
 ```
 
 Si se produce un error en la petición, `success` será igual a `false` y se enviará el mensaje de error correspondiente.
-

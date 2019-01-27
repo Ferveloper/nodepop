@@ -39,11 +39,46 @@ router.get('/listings', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const data = {};
-    data.name = req.body.name;
-    data.forSale = req.body.sale;
-    data.price = req.body.price;
-    data.photo = req.body.photo;
-    data.tags = req.body.tag;
+    if (req.body.name !== undefined) {
+      data.name = req.body.name
+    } else {
+      throw {
+        status: 422,
+        message: "name parameter is required"
+      }
+    };
+    if (req.body.sale !== undefined) {
+      data.forSale = req.body.sale
+    } else {
+      throw {
+        status: 422,
+        message: "sale parameter is required"
+      }
+    };
+    if (req.body.price !== undefined) {
+      data.price = req.body.price
+    } else {
+      throw {
+        status: 422,
+        message: "price parameter is required"
+      }
+    };
+    if (req.body.photo !== undefined) {
+      data.photo = req.body.photo
+    } else {
+      throw {
+        status: 422,
+        message: "photo parameter is required"
+      }
+    };
+    if (req.body.tag !== undefined && !req.body.tag.includes("")) {
+      data.tags = req.body.tag
+    } else {
+      throw {
+        status: 422,
+        message: "tag parameter is required"
+      }
+    };
 
     const listing = new Listing(data);
     const savedListing = await listing.save();
@@ -74,16 +109,6 @@ router.get('/tags', async (req, res, next) => {
     next(err);
     return;
   }
-});
-
-router.use(function (err, req, res, next) {
-  // Send the error JSON
-  res.status(err.status || 500);
-  res.json({
-    success: false,
-    status: err.status || 500,
-    message: err.message
-  });
 });
 
 module.exports = router;
