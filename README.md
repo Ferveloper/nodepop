@@ -135,17 +135,20 @@ Los parámetros aceptados son `name`, `sale`, `price`, `tag`, `skip`, `limit`, `
 
 Para recibir el listado completo de tags en formato JSON ha de realizarse una petición GET a la URL `http://localhost:3000/apiv1/tags`.
 
-`http://localhost:3000/apiv1/tags`
-
 Esta ruta no admite claves y valores en la query string. Si se envian, son ignoradas y se procesa la petición de tags de forma normal, sin devolver ningún error.
 
 ### Creación de anuncios
 
-Para crear un anuncio e insertarlo en la base de datos ha de realizarse una petición POST a la URL `http://localhost:3000/apiv1/listings`.
+Para crear un anuncio e insertarlo en la base de datos ha de realizarse una petición POST a la URL `http://localhost:3000/apiv1`.
 
-Los parámetros aceptados en el body de la petición son `name`, `sale`, `price`, `tag`, `skip`, `limit` y `sort`, cuyo uso se describe a continuación:
+Los parámetros aceptados en el body de la petición POST son `name`, `sale`, `price`, `photo`, `tag`. Todos los parámetros son requeridos para poder crear un anuncio con éxito. En caso contrario, la API devolverá un error. Su uso se describe a continuación:
 
-`http://localhost:3000/apiv1`
+- `name` es el título del anuncio.
+- `sale` es un valor booleano que indica si el artículo se vende (`true`) o se busca (`false`).
+- `price` es el precio del artículo.
+- `photo` es el nombre del archivo que muestra la foto del artículo.
+- `tag` indica la categoría en que se clasifica el artículo. Para clasificar el anuncio en varias categorías, se incluirán varios tags consecutivos en el body del POST.  
+**Ejemplo:** `tag=mobile&tag=lifestyle&tag=work`
 
 ### Formato de respuestas JSON
 
@@ -168,7 +171,7 @@ En caso de error, el formato enviado es el siguiente:
 {
     "success": false,
     "status": /*Status code*/,
-    "message": // Error message        }
+    "message": // Error message
 }
 ```
 
