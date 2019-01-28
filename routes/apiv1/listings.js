@@ -39,7 +39,7 @@ router.get('/listings', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const data = {};
-    if (req.body.name !== undefined) {
+    if (req.body.name) {
       data.name = req.body.name
     } else {
       throw {
@@ -47,7 +47,7 @@ router.post('/', async (req, res, next) => {
         message: "name parameter is required"
       }
     };
-    if (req.body.sale !== undefined) {
+    if (req.body.sale) {
       data.forSale = req.body.sale
     } else {
       throw {
@@ -55,7 +55,7 @@ router.post('/', async (req, res, next) => {
         message: "sale parameter is required"
       }
     };
-    if (req.body.price !== undefined) {
+    if (req.body.price) {
       data.price = req.body.price
     } else {
       throw {
@@ -63,7 +63,7 @@ router.post('/', async (req, res, next) => {
         message: "price parameter is required"
       }
     };
-    if (req.body.photo !== undefined) {
+    if (req.body.photo) {
       data.photo = req.body.photo
     } else {
       throw {
@@ -71,7 +71,7 @@ router.post('/', async (req, res, next) => {
         message: "photo parameter is required"
       }
     };
-    if (req.body.tag !== undefined && !req.body.tag.includes("")) {
+    if (req.body.tag && (typeof req.body.tag == 'string' || (Array.isArray(req.body.tag) && !req.body.tag.includes('')))) {
       data.tags = req.body.tag
     } else {
       throw {
