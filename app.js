@@ -25,8 +25,13 @@ app.use(cookieParser());
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/apiv1', apiRouter);
+//i18n setup
+const i18n = require('./lib/i18nConfigure')();
+app.use(i18n.init);
+
+//Routes
+app.use('/', indexRouter); //Website route
+app.use('/apiv1', apiRouter); //API route
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
