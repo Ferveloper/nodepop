@@ -11,13 +11,20 @@ a {
 header {
   background-color: red;
   color: white;
-  text-align: center;;
-  text-transform: uppercase;
+  text-align: center;  
   padding: 10px
 }
 
+.header {
+  text-transform: uppercase;
+}
+
+.subheader {
+  font-size: 1.2rem;
+}
+
 .title {
-  text-align: center
+  text-align: center;
 }
 
 img {

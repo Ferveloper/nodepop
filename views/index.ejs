@@ -14,22 +14,23 @@
         <h1 class="header">
             <%= title %>
         </h1>
+        <p class='subheader'><%= __('The best app to find all that you want and need!') %></p>
     </header>
     <main>
-        <h1 class="title">Listado de artículos</h1>
+        <h1 class="title"><%= __('Listings') %></h1>
         <div class="container">
             <% db.forEach(db => { %>
             <div class="listing">
                 <h2 class="name"><%= db.name %></h2>
                 <p><% if (db.forSale) { %>
-                    <span class="sale">Se vende</span>
+                    <span class="sale"><%= __('Sell') %></span>
                 <% } else { %>
-                    <span class="demand">Se busca</span></p>
+                    <span class="demand"><%= __('Buy') %></span></p>
                 <% } %>
                 <p class="price"><%= db.price %> €</p>
                 <div class="img-container"><img src="./images/<%= db.photo %>" alt="<%= db.photo %>"></div>
                 <p><% db.tags.forEach(tag => { %>
-                    <span class="tag"><%=tag %></span>
+                    <span class="tag"><%=__(tag) %></span>
                     <% }) %></p>
             </div>
             <% }) %>
