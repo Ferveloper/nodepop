@@ -32,6 +32,7 @@ app.use(i18n.init);
 //Routes
 app.use('/', indexRouter); //Website route
 app.use('/apiv1', apiRouter); //API route
+app.use('/change-lang', require('./routes/change-lang'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,10 +1,11 @@
 {
 	"Listings": "Listado de artículos",
-	"Sell": "Se vende",
-	"Buy": "Se busca",
+	"For sale": "Se vende",
+	"For buy": "Se busca",
 	"lifestyle": "estilo de vida",
 	"motor": "motor",
 	"mobile": "móvil",
 	"work": "trabajo",
-	"The best app to find all that you want and need!": "¡La mejor app para encontrar todo lo que quieres y necesitas!"
+	"The best app to find all that you want and need!": "¡La mejor app para encontrar todo lo que quieres y necesitas!",
+	"Languages": "Idiomas"
 }

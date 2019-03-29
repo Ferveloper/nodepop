@@ -11,10 +11,18 @@
 
 <body>
     <header>
+        <nav class="navbar">
+            <ul class="menu">
+                <li class="menu-item"><%= __('Languages') %></li>
+                <% getLocales().forEach( locale => { %>
+                <li class="menu-item"><a href="/change-lang/<%= locale %>"><img class="flag" src="./images/<%= locale %>.png" alt="" srcset=""></a></li>
+                <% } ) %>
+            </ul>
+        </nav>
         <h1 class="header">
             <%= title %>
         </h1>
-        <p class='subheader'><%= __('The best app to find all that you want and need!') %></p>
+        <p class="subheader"><%= __('The best app to find all that you want and need!') %></p>
     </header>
     <main>
         <h1 class="title"><%= __('Listings') %></h1>
@@ -23,9 +31,9 @@
             <div class="listing">
                 <h2 class="name"><%= db.name %></h2>
                 <p><% if (db.forSale) { %>
-                    <span class="sale"><%= __('Sell') %></span>
-                <% } else { %>
-                    <span class="demand"><%= __('Buy') %></span></p>
+                    <span class="sale"><%= __('For sale') %></span>
+                    <% } else { %>
+                    <span class="demand"><%= __('For buy') %></span></p>
                 <% } %>
                 <p class="price"><%= db.price %> €</p>
                 <div class="img-container"><img src="./images/<%= db.photo %>" alt="<%= db.photo %>"></div>

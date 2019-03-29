@@ -1,10 +1,11 @@
 {
 	"Listings": "Listings",
-	"Sell": "Sell",
-	"Buy": "Buy",
+	"For sale": "For sale",
+	"For buy": "For buy",
 	"lifestyle": "lifestyle",
 	"motor": "motor",
 	"mobile": "mobile",
 	"work": "work",
-	"The best app to find all that you want and need!": "The best app to find all that you want and need!"
+	"The best app to find all that you want and need!": "The best app to find all that you want and need!",
+	"Languages": "Languages"
 }

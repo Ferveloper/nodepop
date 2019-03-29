@@ -1,3 +1,7 @@
+* {
+  /* border: 1px solid black */
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,18 +9,42 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar {
+  /* float: right; */
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  /* display: inline-block; */
+  list-style: none;
+  height: 25px;
+}
+
+.flag {
+  width: 50%;
+  object-fit: cover
 }
 
 header {
   background-color: red;
   color: white;
-  text-align: center;  
-  padding: 10px
+  text-align: center;
+  padding: 10px;
 }
 
 .header {
   text-transform: uppercase;
+  margin: 0
 }
 
 .subheader {
