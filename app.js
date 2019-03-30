@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const db = require('./lib/connectMongoose');
+const jwtAuth = require('./lib/jwtAuth');
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/apiv1/listings');
 
@@ -31,7 +32,7 @@ app.use(i18n.init);
 
 //Routes
 app.use('/', indexRouter); //Website route
-app.use('/apiv1', apiRouter); //API route
+app.use('/apiv1', jwtAuth(), apiRouter); //API route
 app.use('/change-lang', require('./routes/change-lang'));
 
 // catch 404 and forward to error handler

@@ -3,7 +3,10 @@
 const express = require('express');
 const router = express.Router();
 const Listing = require('../../models/Listing');
+const User = require('../../models/User')
 const applyFilters = require('../../lib/applyFilters');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 /* GET home page. */
 router.get('/listings', async (req, res, next) => {
@@ -110,5 +113,43 @@ router.get('/tags', async (req, res, next) => {
     return;
   }
 });
+
+// JWT authentication
+
+router.post('/authenticate', async (req, res, next) => {
+  try {
+    // get login parameters from body
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // serach user in database
+    const user = await User.findOne({ email: email });
+
+    // error response if user or password don't match
+    if (!user || !await bcrypt.compare(password, user.password)) {
+      res.json({ success: false, error: res.__('Invalid credentials') });
+      return;
+    }
+
+    // creamos un JWT
+    // no meter una instancia de Mongoose en el Payload!!!!!!!!
+    const token = await new Promise((resolve, reject) => {
+      jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: '2d'
+      }, (err, token) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(token);
+      });
+    });
+
+    res.json({ success: true, token: token });
+    
+  } catch (err) {
+    next(err);
+  }
+})
 
 module.exports = router;
