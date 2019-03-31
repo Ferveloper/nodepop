@@ -8,6 +8,8 @@ const jwtAuth = require('../../lib/jwtAuth');
 const applyFilters = require('../../lib/applyFilters');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 // JWT authentication
 router.post('/authenticate', async (req, res, next) => {
@@ -76,9 +78,11 @@ router.get('/listings', jwtAuth(), async (req, res, next) => {
 });
 
 // Create a listing
-router.post('/', jwtAuth(), async (req, res, next) => {
+router.post('/', jwtAuth(), upload.single('photo'), async (req, res, next) => {
   try {
     const data = {};
+    console.log("TCL: req.file", req.file)
+    console.log("TCL: req.body", req.body)
     if (req.body.name) {
       data.name = req.body.name
     } else {
