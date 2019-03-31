@@ -35,11 +35,11 @@ db.once('open', async function () {
     console.log(`Insertados ${insertedListings.length} anuncios iniciales en la base de datos...`);
 
     // hash passwords
-    usersJSON.forEach(async (user) => await User.hashPassword(user.password));
+    // usersJSON.forEach(async (user) => await User.hashPassword(user.password));
 
-    // for (let i = 0; i < usersJSON.length; i++) {
-    //   usersJSON[i].password = await User.hashPassword(usersJSON[i].password);
-    // }
+    for (let i = 0; i < usersJSON.length; i++) {
+      usersJSON[i].password = await User.hashPassword(usersJSON[i].password);
+    }
 
     const deletedUsers = await User.deleteMany();
     console.log(`Borrados todos los usuarios (${deletedUsers.n} documentos en total) de la base de datos...`);
