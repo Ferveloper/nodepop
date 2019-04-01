@@ -35,7 +35,7 @@
                     <% } else { %>
                     <span class="demand"><%= __('For buy') %></span></p>
                 <% } %>
-                <p class="price"><%= db.price %> €</p>
+                <p class="price"><%= `${__('Price')}: ${db.price}` %> €</p>
                 <div class="img-container"><img src="./images/<%= db.photo %>" alt="<%= db.photo %>"></div>
                 <p><% db.tags.forEach(tag => { %>
                     <span class="tag"><%=__(tag) %></span>

@@ -10,6 +10,7 @@
   "dependencies": {
     "bcrypt": "^3.0.5",
     "cookie-parser": "~1.4.3",
+    "cote": "^0.19.1",
     "debug": "~2.6.9",
     "dotenv": "^7.0.0",
     "ejs": "~2.5.7",
