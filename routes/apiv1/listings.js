@@ -9,7 +9,20 @@ const applyFilters = require('../../lib/applyFilters');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images')
+  },
+  filename: function (req, file, cb) {
+    let dotIndex = file.originalname.lastIndexOf('.');
+    let name = file.originalname.substring(0, dotIndex);
+    let ext = file.originalname.substring(dotIndex, file.originalname.length);
+    cb(null, `${name}-${Date.now()}${ext}`)
+  }
+});
+const upload = multer({
+  storage: storage
+});
 
 // JWT authentication
 router.post('/authenticate', async (req, res, next) => {
@@ -107,8 +120,8 @@ router.post('/', jwtAuth(), upload.single('photo'), async (req, res, next) => {
         message: "price parameter is required"
       }
     };
-    if (req.body.photo) {
-      data.photo = req.body.photo
+    if (req.file) {
+      data.photo = req.file.filename
     } else {
       throw {
         status: 422,
