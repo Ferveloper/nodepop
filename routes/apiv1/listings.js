@@ -23,6 +23,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage
 });
+const createThumbnail = require('../../lib/thumbnailClient')
 
 // JWT authentication
 router.post('/authenticate', async (req, res, next) => {
@@ -121,7 +122,8 @@ router.post('/', jwtAuth(), upload.single('photo'), async (req, res, next) => {
       }
     };
     if (req.file) {
-      data.photo = req.file.filename
+      data.photo = req.file.filename;
+      createThumbnail(100, 100, req.file.destination, req.file.filename)
     } else {
       throw {
         status: 422,

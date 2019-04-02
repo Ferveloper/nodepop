@@ -12,7 +12,8 @@ const usersJSON = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
 
 //Connecting to database
 mongoose.connect(`mongodb://${server}/${listingsDB}`, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true
 });
 
 const db = mongoose.connection;
