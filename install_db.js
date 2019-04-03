@@ -3,10 +3,11 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const readline = require('readline');
+const rimraf = require('rimraf');
 const Listing = require('./models/Listing');
 const User = require('./models/User')
 const fs = require('fs');
-const json = JSON.parse(fs.readFileSync('./data/listings.json', 'utf8'));
+const listingsJSON = JSON.parse(fs.readFileSync('./data/listings.json', 'utf8'));
 const usersJSON = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
 
 //Connecting to database
@@ -29,9 +30,18 @@ db.once('open', async function () {
       process.exit(0);
     };
 
+    //Delete existing thumbnails
+    rimraf('./public/images/thumbnails/*', function () { console.log('Thumbnails eliminados...'); });
+
+    //Create thumbnails
+    for (let i = 0; i < listingsJSON.length; i++) {
+      const thumbnailName = await Listing.thumbnail(100, 100, './public/images',listingsJSON[i].photo);
+      listingsJSON[i].thumbnail = `thumbnails/${thumbnailName}`;
+    }
+
     const deletedListings = await Listing.deleteMany();
     console.log(`Borrados todos los anuncios (${deletedListings.n} documentos en total) de la base de datos...`);
-    const insertedListings = await Listing.insertMany(json);
+    const insertedListings = await Listing.insertMany(listingsJSON);
     console.log(`Insertados ${insertedListings.length} anuncios iniciales en la base de datos...`);
 
     // hash passwords

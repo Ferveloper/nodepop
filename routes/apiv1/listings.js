@@ -95,8 +95,6 @@ router.get('/listings', jwtAuth(), async (req, res, next) => {
 router.post('/', jwtAuth(), upload.single('photo'), async (req, res, next) => {
   try {
     const data = {};
-    console.log("TCL: req.file", req.file)
-    console.log("TCL: req.body", req.body)
     if (req.body.name) {
       data.name = req.body.name
     } else {
