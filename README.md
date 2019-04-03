@@ -37,7 +37,7 @@ Antes de iniciar el servidor, deberá crearse o inicializarse la base de datos m
 npm run initdb
 ```  
 
-Este comando ejecuta el proceso de creación o borrado de la base de datos e inserción de los anuncios iniciales. Por seguridad, incluye una pregunta de confirmación en consola del borrado de la base de datos, que abortará el proceso ante cualquier respuesta distinta de "si".
+Este comando ejecuta el proceso de creación o borrado de la base de datos, inserción de los anuncios y usuarios iniciales y creación de los thumbnails de las imágenes. Por seguridad, incluye una pregunta de confirmación en consola del borrado de la base de datos, que abortará el proceso ante cualquier respuesta distinta de "si".
 
 ## Configuración del fichero inicial de anuncios
 
@@ -49,6 +49,7 @@ name: String,
 forSale: Boolean,
 price: Number,
 photo: String,
+thumbnail: String,
 tags: [String]
 });
 ```
@@ -59,17 +60,25 @@ Donde:
 - `forSale` es un valor booleano que indica si el artículo se vende (`true`) o se busca (`false`).
 - `price` es el precio del artículo.
 - `photo` es el nombre del archivo que muestra la foto del artículo.
+- `thumbnail` es el nombre del archivo que muestra el thumbnail del artículo creado a partir de la foto original.
 - `tags` es el listado de categorías del artículo. Inicialmente se han definido las categorías `mobile`, `motor`, `lifestyle` y `work`, pero pueden crearse nuevas sin provocar errores de código.
 
 ## Arranque de la API
 
-Una vez configurada la API, puede arrancarse en modo desarrollo con el comando:
-
-`npm run dev`
-
-Para el arranque en modo producción:
+El arranque y parada de la API se gestiona con `pm2` a través de scripts.
+Una vez configurada la API, puede arrancarse con el comando:
 
 `npm start`
+
+Para detenerla:
+
+`npm run stop`
+
+El proyecto incluye `pm2` instalado como dependencia, pero se recomienda instalarlo globalmente con:
+
+`npm i -g pm2`
+
+Entonces podrá gestionarse el arranque y parada de la API con `pm2 start` y `pm2 stop all`. Para más comandos, remitirse a al documentación oficial de `pm2`. 
 
 ## Instrucciones de uso
 
