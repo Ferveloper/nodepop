@@ -1,17 +1,16 @@
 'use strict';
 
+require('dotenv').config();
 const mongoose = require('mongoose');
 const readline = require('readline');
-const server = 'localhost';
-const listingsDB = 'listings_db';
 const Listing = require('./models/Listing');
 const User = require('./models/User')
 const fs = require('fs');
-const json = JSON.parse(fs.readFileSync('./listings.json', 'utf8'));
+const json = JSON.parse(fs.readFileSync('./data/listings.json', 'utf8'));
 const usersJSON = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
 
 //Connecting to database
-mongoose.connect(`mongodb://${server}/${listingsDB}`, {
+mongoose.connect(`mongodb://${process.env.SERVER}/${process.env.DB}`, {
   useNewUrlParser: true,
   useCreateIndex: true
 });
