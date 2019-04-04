@@ -7,7 +7,8 @@
     "log": "node ./node_modules/pm2/bin/pm2 log",
     "stop": "node ./node_modules/pm2/bin/pm2 stop all",
     "prod": "node ./node_modules/pm2/bin/pm2 start --env production",
-    "initdb": "node install_db.js"
+    "initdb": "node install_db.js",
+    "test": "mocha **/*.e2e.js"
   },
   "dependencies": {
     "bcrypt": "^3.0.5",
@@ -21,11 +22,13 @@
     "i18n": "^0.8.3",
     "jimp": "^0.6.1",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.0.2",
     "mongoose": "^5.4.3",
     "morgan": "~1.9.0",
     "multer": "^1.4.1",
     "pm2": "^3.4.1",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",

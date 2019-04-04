@@ -81,7 +81,11 @@ Para detener la aplicación:
 
 `npm run stop all`
 
-Toda la gestión de los procesos se gestiona con el la dependencia local `pm2`. Opcionalmente, puede instalarse globalmente y usarse sin recurrir a los scripts definidos.
+Para lanzar los tests:
+
+`npm test`
+
+Toda la gestión de los procesos se realiza con el la dependencia local `pm2`. Opcionalmente, puede instalarse globalmente y usarse sin recurrir a los scripts definidos.
 
 ## Instrucciones de uso
 
