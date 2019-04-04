@@ -65,20 +65,23 @@ Donde:
 
 ## Arranque de la API
 
-El arranque y parada de la API se gestiona con `pm2` a través de scripts.
-Una vez configurada la API, puede arrancarse con el comando:
+Una vez configurada la API, puede arrancarse en modo desarrollo con el comando:
 
 `npm start`
 
-Para detenerla:
+Para el arranque en modo producción:
 
-`npm run stop`
+`npm run prod`
 
-El proyecto incluye `pm2` instalado como dependencia, pero se recomienda instalarlo globalmente con:
+Para mostrar los logs en consola:
 
-`npm i -g pm2`
+`npm run log`
 
-Entonces podrá gestionarse el arranque y parada de la API con `pm2 start` y `pm2 stop all`. Para más comandos, remitirse a al documentación oficial de `pm2`. 
+Para detener la aplicación:
+
+`npm run stop all`
+
+Toda la gestión de los procesos se gestiona con el la dependencia local `pm2`. Opcionalmente, puede instalarse globalmente y usarse sin recurrir a los scripts definidos.
 
 ## Instrucciones de uso
 

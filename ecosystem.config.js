@@ -6,12 +6,14 @@ module.exports = {
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
     instances: 1,
     autorestart: true,
-    watch: true,
     env: {
-      NODE_ENV: 'development'
+      NODE_ENV: 'development',
+      watch: true,
+      ignore_watch : ['node_modules', 'public/images'],
     },
     env_production: {
-      NODE_ENV: 'production'
+      NODE_ENV: 'production',
+      watch: false
     }
   },
   {
@@ -21,12 +23,14 @@ module.exports = {
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
     instances: 1,
     autorestart: true,
-    watch: true,
     env: {
-      NODE_ENV: 'development'
+      NODE_ENV: 'development',
+      watch: true,
+      ignore_watch : ['node_modules', 'public/images']
     },
     env_production: {
-      NODE_ENV: 'production'
+      NODE_ENV: 'production',
+      watch: false
     }
   }
 ],

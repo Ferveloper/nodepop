@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./node_modules/pm2/bin/pm2 start",
+    "start": "cross-env DEBUG=nodepop:* node ./node_modules/pm2/bin/pm2 start",
+    "log": "node ./node_modules/pm2/bin/pm2 log",
     "stop": "node ./node_modules/pm2/bin/pm2 stop all",
-    "dev": "cross-env DEBUG=nodepop:* nodemon",
+    "prod": "node ./node_modules/pm2/bin/pm2 start --env production",
     "initdb": "node install_db.js"
   },
   "dependencies": {
