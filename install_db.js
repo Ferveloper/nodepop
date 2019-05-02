@@ -11,7 +11,7 @@ const listingsJSON = JSON.parse(fs.readFileSync('./data/listings.json', 'utf8'))
 const usersJSON = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
 
 //Connecting to database
-mongoose.connect(`mongodb://${process.env.SERVER}/${process.env.DB}`, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true
 });
