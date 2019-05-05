@@ -1,5 +1,10 @@
 # Nodepop v1.0
 
+## URLs para la práctica de DevOps con AWS y Nginx
+
+Web estática: [13.53.115.125](http://13.53.115.125/)  
+Nodepop: [ec2-13-53-115-125.eu-north-1.compute.amazonaws.com](http://ec2-13-53-115-125.eu-north-1.compute.amazonaws.com/)
+
 ## Descripción
 
 Nodepop es una API desarrollada en Node, Express y MongoDB que gestiona una base de datos de anuncios de compra/venta de artículos.  
@@ -167,7 +172,6 @@ Los parámetros aceptados en el body de la petición POST son `name`, `sale`, `p
 - `tag` indica la categoría en que se clasifica el artículo. Para clasificar el anuncio en varias categorías, se incluirán varios tags consecutivos en el body del POST.  
 **Ejemplo:** `tag=mobile&tag=lifestyle&tag=work`
 
-### Formato de respuestas JSON
 
 El formato de resultados para una petición aceptada es el siguiente:
 
