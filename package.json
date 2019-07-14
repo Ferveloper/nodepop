@@ -8,7 +8,7 @@
     "stop": "node ./node_modules/pm2/bin/pm2 stop all",
     "prod": "node ./node_modules/pm2/bin/pm2 start --env production",
     "initdb": "node install_db.js",
-    "test": "mocha **/*.e2e.js"
+    "test": "mocha **/*.e2e.js --exit"
   },
   "dependencies": {
     "bcrypt": "^3.0.5",
