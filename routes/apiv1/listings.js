@@ -37,6 +37,7 @@ router.post('/authenticate', async (req, res, next) => {
 
     // error response if user or password don't match
     if (!user || !await bcrypt.compare(password, user.password)) {
+      res.status(401);
       res.json({ success: false, error: res.__('Invalid credentials') });
       return;
     }
@@ -121,7 +122,7 @@ router.post('/', jwtAuth(), upload.single('photo'), async (req, res, next) => {
     };
     if (req.file) {
       data.photo = req.file.filename;
-      createThumbnail(100, 100, req.file.destination, req.file.filename)
+      if (process.env.NODE_ENV !== 'test') createThumbnail(100, 100, req.file.destination, req.file.filename)
     } else {
       throw {
         status: 422,
