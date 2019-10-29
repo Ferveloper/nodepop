@@ -2,8 +2,8 @@
 
 ## URLs para la práctica de DevOps con AWS y Nginx
 
-Web estática: [13.53.115.125](http://13.53.115.125/)  
-Nodepop: [ec2-13-53-115-125.eu-north-1.compute.amazonaws.com](http://ec2-13-53-115-125.eu-north-1.compute.amazonaws.com/)
+TMDd App (React): [13.48.174.238](http://13.48.174.238/)  
+Nodepop (Node.js): [ec2-13-48-174-238.eu-north-1.compute.amazonaws.com](http://ec2-13-48-174-238.eu-north-1.compute.amazonaws.com/)
 
 ## Descripción
 
