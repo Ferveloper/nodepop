@@ -11,7 +11,7 @@
     "test": "mocha **/*.e2e.js --exit"
   },
   "dependencies": {
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "cookie-parser": "~1.4.3",
     "cote": "^0.19.1",
     "debug": "~2.6.9",
